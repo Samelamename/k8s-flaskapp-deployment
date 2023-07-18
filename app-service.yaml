@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mytriotaskflaskapp
+spec:
+  type: LoadBalancer # set the type of Service
+  selector:
+    app: mytriotaskflaskapp # referencing the Pod's label
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000

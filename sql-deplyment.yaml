@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mytriotasksql
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mytriotasksql
+  template:
+    metadata:
+      labels:
+        app: mytriotasksql
+    spec: 
+      containers:
+        - name: mytriotasksql 
+          image: aolaad1/flaskapp-db
+          ports: 
+          - containerPort: 3306
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: password
+          - name: MYSQL_DATABASE
+            value: flask-db
